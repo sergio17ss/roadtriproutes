@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How We Build Road-Trip Budgets — RoadTripRoutes Methodology</title>
+  <meta name="description" content="Exactly how RoadTripRoutes calculates gas, tolls, park fees, lodging and drive times: the official sources we use (AAA, NPS, DOT/USDOT), the rules we follow, and what every estimate can and cannot tell you.">
+  <link rel="canonical" href="https://roadtriproutes.com/metodologia/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoadTripRoutes">
+  <meta property="og:title" content="How We Build Road-Trip Budgets — Methodology">
+  <meta property="og:description" content="The sources (AAA, NPS, DOT/USDOT), the rules, and the honest limits of every road-trip budget we publish.">
+  <meta property="og:url" content="https://roadtriproutes.com/metodologia/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=70">
+  <meta property="og:image:alt" content="A straight desert highway under a wide open sky">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How We Build Road-Trip Budgets — Methodology">
+  <meta name="twitter:description" content="The sources (AAA, NPS, DOT/USDOT), the rules, and the honest limits of every road-trip budget we publish.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=70">
+
+  <meta name="theme-color" content="#0e3150">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://roadtriproutes.com/metodologia/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you calculate gas costs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gas per leg = miles  divided by an assumed miles-per-gallon for a typical vehicle (we publish the MPG we assume), multiplied by the AAA state-average fuel price for the states the leg crosses, dated and linked. We never invent a per-gallon price; when we use a round number for a worked example we say it is an example."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do park entrance fees come from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entrance fees are taken from the current NPS official fee pages (nps.gov/planyourvisit/fees.htm) and state-park official sites. We print the fee, the date we checked it, and the link, and we note where the America the Beautiful pass would change the math."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you estimate lodging?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lodging is published as a nightly price band (for example $140–$240) because walk-up rates shift with season and occupancy. Bands come from public, current listings (official visitor bureaus and published booking data), not from a single scraped deal; we always say a figure is a range, never a fake precise number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do your budgets include food, attractions and extras?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our leg tables cover the trip-critical line items: gas, tolls, park/entry fees and lodging. Food, tours, souvenirs and contingency cash are shown as a separate per-day allowance in each guide rather than being buried inside a leg, because tastes differ far more than gas prices do."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are drive times estimated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We start from the distance and the posted speed limit for each segment (US speed data via USDOT/FHWA), then add a realistic stop allowance — roughly 15 minutes for every two hours on the road plus any known slow-and-scenic sections. We publish the result as a range with a note when the road itself is the reason to go slowly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do your figures go out of date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because prices, fees and tolls change — that is physics, not negligence. Every figure carries the date we last verified it, and every guide shows a 'last reviewed' date. We re-check at least twice a year and faster when a known change lands. Please verify current rates on the official sources before you travel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do you mean by 'what nobody tells you'?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every route guide carries one overlooked-in-the-SERP detail: the toll-only bridge with no cash lane, the park lot that takes cash only, the coastal leg with miles of no-passing zones. It is our original reporting on each route — not a recycled warning — and we name the source when the fact is official."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="masthead" id="top">
+    <div class="masthead__inner wrap">
+      <p class="sitebrand"><a href="/">RoadTrip<span>Routes</span></a></p>
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#routes">Routes</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/metodologia/" aria-current="page">Methodology</a></li>
+          <li><a href="/contacto/">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="masthead__date">September 18, 2026 &middot; United States Edition</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--short" aria-label="Methodology">
+      <figure class="hero__media">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1800&q=70" alt="A straight desert highway running toward the horizon under a wide open sky" width="1800" height="1200">
+        <figcaption class="hero__credit">Photo: <a href="https://unsplash.com/photos/1488646953014-85cb44e25828" rel="nofollow noopener">Unsplash</a></figcaption>
+      </figure>
+      <div class="hero__copy wrap">
+        <p class="kicker">Methodology</p>
+        <h1>How we build road-trip budgets</h1>
+      </div>
+    </section>
+
+    <article class="article">
+      <div class="wrap article__body">
+        <p class="byline">By <strong>Editorial RoadTripRoutes</strong> &middot; Last reviewed September 18, 2026</p>
+
+        <aside class="tl-dr" aria-label="TL;DR — methodology">
+          <p class="tl-dr__label">TL;DR</p>
+          <p>Every budget starts with official sources: <strong>AAA</strong> for gas, <strong>NPS</strong> and state-park pages for entry fees, <strong>state toll authorities</strong> for tolls, and <strong>USDOT</strong> speed-and-distance data for drive times. Figures are always dated, always linked, and labeled estimate-vs-fact. Below are the rules, a worked example, and the honest limits.</p>
+        </aside>
+
+        <div class="chapter" id="how-it-works">
+          <h2 id="how-it-works-title">The one-line summary</h2>
+          <p>&#8220;Plan the drive, not just the destination&#8221; works because <dfn title="A defined stretch of a route between two planned stops.">legs</dfn> turn a vague trip into a countable one. Each guide splits the route into legs and answers, for every leg, four questions that matter: <strong>how far, how long, what it costs, and what can go wrong</strong>. This page is the rulebook both we and you hold us to.</p>
+        </div>
+
+        <div class="chapter" id="sources">
+          <h2 id="sources-title">The sources we cite</h2>
+          <p>We use official or primary public sources wherever one exists, and we say so when there isn&#8217;t a single authoritative number for something (lodging being the main case).</p>
+          <ul class="sources">
+            <li>
+              <span class="sources__who">AAA — fuel prices</span>
+              <p><a href="https://gasprices.aaa.com/" rel="nofollow noopener">AAA national &amp; state gas price averages</a>. Gas is the leg line item that moves fastest; we take the state average for the states a leg crosses, record the date, and link it. When a guide assumes a vehicle&#8217;s miles-per-gallon, the assumed MPG is printed next to the calculation.</p>
+            </li>
+            <li>
+              <span class="sources__who">National Park Service — entrance fees &amp; passes</span>
+              <p><a href="https://www.nps.gov/planyourvisit/fees.htm" rel="nofollow noopener">NPS entrance fees</a> and the <a href="https://www.nps.gov/planyourvisit/passes.htm" rel="nofollow noopener">America the Beautiful pass</a>. We print the fee, the &#8220;as of&#8221; date and whether a pass would change the math. Where a guide crosses a state park or national forest, we use that agency&#8217;s official page instead.</p>
+            </li>
+            <li>
+              <span class="sources__who">State DOTs &amp; toll authorities — tolls</span>
+              <p>Toll figures come from the agency that sets them &mdash; for example <a href="https://www.bayareafastrak.org/" rel="nofollow noopener">Bay Area FasTrak</a> for the bridges you&#8217;ll cross heading out of San Francisco. We flag the practical facts nobody puts in the SERP: which structures are toll-only, which have no cash lane, and what a rental-car transponder fee does to the total.</p>
+            </li>
+            <li>
+              <span class="sources__who">USDOT / FHWA — speed limits and distances</span>
+              <p>Distances come from route legs we measure, and drive-time math uses posted speed limits via <a href="https://www.fhwa.dot.gov/" rel="nofollow noopener">USDOT/FHWA</a> data. We then add a realistic stop allowance &mdash; and we label a segment &#8220;slow and scenic&#8221; when the road is deliberately, gloriously unhurried.</p>
+            </li>
+            <li>
+              <span class="sources__who">Official road-closure &amp; season pages</span>
+              <p>Closures, fire season, bridge work and storm damage are checked on the owning agency&#8217;s own page (the relevant NPS or state DOT site) and dated on the guide, because &#8220;as of&#8221; is the only honest tense for a road closure.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="chapter" id="rules">
+          <h2 id="rules-title">The rules we can be held to</h2>
+          <ol>
+            <li><strong>Every figure is dated or labeled.</strong> A number without an &#8220;as of&#8221; date is an estimate, and it says so in the text.</li>
+            <li><strong>Official source first.</strong> If AAA, NPS, a DOT or a toll authority publishes it, we link them rather than a blog that links them.</li>
+            <li><strong>Ranges beat false precision.</strong> Lodging and seasonal gas are bands, not exact tickets. $140&ndash;$240 says more than $197.33 ever could.</li>
+            <li><strong>Assumptions are printed.</strong> The MPG we assume, the hours we drive per day, the stop allowance &mdash; all public, all contestable.</li>
+            <li><strong>One &#8220;what nobody tells you&#8221; per route.</strong> Each guide carries an original, sourced detail the search-result pages skip.</li>
+            <li><strong>No selling the answer.</strong> We never adjust a number to please a brand, a hotel or an ad buyer &mdash; the <a href="/editorial-guidelines/">editorial guidelines</a> make that a rule, not a value.</li>
+          </ol>
+        </div>
+
+        <div class="chapter" id="sample-budget">
+          <h2 id="sample-budget-title">A worked example: what a leg table looks like</h2>
+          <p>This is the structure every guide will use. The figures below are an <strong>illustrative example</strong> for a coastal California primer &mdash; they show the math, they are not a live quote. In a published guide, each cell&#8217;s source and &#8220;as of&#8221; date sits in the footnotes.</p>
+
+          <div class="table-scroll">
+            <table class="tabular">
+              <caption>Sample leg budget &mdash; coastal primer (illustrative example; real guides carry dated, sourced figures)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Leg</th>
+                  <th scope="col" class="num">Miles</th>
+                  <th scope="col" class="num">Est. drive</th>
+                  <th scope="col" class="num">Gas <span class="unit">(26 mpg)</span></th>
+                  <th scope="col" class="num">Tolls</th>
+                  <th scope="col" class="num">Park / entry</th>
+                  <th scope="col" class="num">Lodging <span class="unit">(night)</span></th>
+                  <th scope="col" class="num">Leg range</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">San Francisco &rarr; Santa Cruz</th>
+                  <td class="num">75</td>
+                  <td class="num">1h30m</td>
+                  <td class="num">~$11 <span class="unit">(2.9 gal @ $3.75)</span></td>
+                  <td class="num">$8&ndash;$14</td>
+                  <td class="num">&mdash;</td>
+                  <td class="num">$160&ndash;$240</td>
+                  <td class="num">$180&ndash;$265</td>
+                </tr>
+                <tr>
+                  <th scope="row">Santa Cruz &rarr; Monterey / Carmel</th>
+                  <td class="num">48</td>
+                  <td class="num">1h05m</td>
+                  <td class="num">~$7 <span class="unit">(1.8 gal @ $3.75)</span></td>
+                  <td class="num">&mdash;</td>
+                  <td class="num">&mdash;</td>
+                  <td class="num">$170&ndash;$260</td>
+                  <td class="num">$180&ndash;$270</td>
+                </tr>
+                <tr>
+                  <th scope="row">Monterey &rarr; Big Sur</th>
+                  <td class="num">31</td>
+                  <td class="num">0h40m</td>
+                  <td class="num">~$5 <span class="unit">(1.2 gal @ $3.75)</span></td>
+                  <td class="num">&mdash;</td>
+                  <td class="num">$12 <span class="unit">(day-use, ex.)</span></td>
+                  <td class="num">&mdash;</td>
+                  <td class="num">~$20&ndash;$25</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row">Coastal primer, 2 nights</th>
+                  <td class="num">154</td>
+                  <td class="num">~3h15m</td>
+                  <td class="num">~$23</td>
+                  <td class="num">$8&ndash;$14</td>
+                  <td class="num">$12</td>
+                  <td class="num">$330&ndash;$500</td>
+                  <td class="num">$380&ndash;$560</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="disclaimer">Example figures only. In a published guide, gas cells carry the dated AAA state average for the states crossed, toll cells carry the official toll-authority rate, and park fees carry the dated NPS/state-park rate &mdash; each with a live link in the source list.</p>
+
+          <h3>Mileage &amp; drive time, leg by leg</h3>
+          <p>The companion table that appears on every route page. Stop allowance is built in &mdash; roughly 15 minutes for every two hours on the road, plus flags where the road itself is slow.</p>
+          <div class="table-scroll">
+            <table class="tabular">
+              <caption>Sample mileage &amp; time table (illustrative)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Leg</th>
+                  <th scope="col" class="num">Miles</th>
+                  <th scope="col" class="num">Posted limit (rep.)</th>
+                  <th scope="col" class="num">Pure drive time</th>
+                  <th scope="col" class="num">With stops</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">San Francisco &rarr; Santa Cruz</th>
+                  <td class="num">75</td>
+                  <td class="num">65 mph</td>
+                  <td class="num">1h10m</td>
+                  <td class="num">1h30m</td>
+                  <td>Tolls southbound; slow through San Bruno.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Santa Cruz &rarr; Monterey / Carmel</th>
+                  <td class="num">48</td>
+                  <td class="num">60 mph</td>
+                  <td class="num">0h50m</td>
+                  <td class="num">1h05m</td>
+                  <td>Highway 1 hugging the coast.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Monterey &rarr; Big Sur</th>
+                  <td class="num">31</td>
+                  <td class="num">55 mph</td>
+                  <td class="num">0h35m</td>
+                  <td class="num">0h40m</td>
+                  <td>Slow and scenic; no-passing stretches.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="chapter" id="stops">
+          <h2 id="stops-title">The numbered stop map</h2>
+          <p>Every guide orders its stops in true driving order as a numbered list &mdash; stop 1 is the first place you pull over, not the prettiest one. It reads like a route, because it is one.</p>
+          <ol class="stopmap">
+            <li>
+              <h3>Santa Cruz</h3>
+              <time>Day 1, mid-morning</time>
+              <p>Your first pull-over of the coastal primer: beach access and lunch before the coast road unrolls.</p>
+            </li>
+            <li>
+              <h3>Monterey &amp; Carmel</h3>
+              <time>Day 1, afternoon</time>
+              <p>Overnight base for the middle leg; the historic waterfront and the village of Carmel (public parking fills early).</p>
+            </li>
+            <li>
+              <h3>Big Sur &amp; the Bixby Bridge</h3>
+              <time>Day 2</time>
+              <p>The turn-around photograph; pull-offs are signed, cell signal is not guaranteed, and the drive is the destination.</p>
+            </li>
+          </ol>
+          <aside class="plan-ahead" aria-labelledby="planAheadLabel">
+            <p class="plan-ahead__label" id="planAheadLabel">Plan ahead</p>
+            <p>On Highway 1 between Monterey and Big Sur, months of no-passing zones mean the maps&#8217; &#8220;31 miles&#8221; pedals slower than the number suggests &mdash; budget the scenery. That is the kind of note every &#8220;what nobody tells you&#8221; flag in our guides is made of: original, specific, and true on the ground.</p>
+          </aside>
+        </div>
+
+        <div class="chapter" id="limits">
+          <h2 id="limits-title">What an estimate can&#8217;t do</h2>
+          <p>No budget survives first contact with a real road, and ours don&#8217;t pretend otherwise. We do not price flights, we do not quote fuel from a single truck stop, and we treat lodging as a band because a night&#8217;s rate is not a fact until you book it. Weather, fires, traffic and the last-minute whim to stay an extra night are yours &mdash; and so is the joy in them.</p>
+          <p>Our job is to make the trip countable before you go, with numbers you can trace to a source you can check. Nothing on RoadTripRoutes is a promise about what you will pay; it is a serious, dated, sourced estimate of what the drive costs. <strong>Verify current rates on the official sources before you travel.</strong></p>
+        </div>
+
+        <div class="chapter" id="glossary">
+          <h2 id="glossary-title">Road glossary used on this site</h2>
+          <p>Terms we use in the guides, defined like a field notebook rather than a dictionary.</p>
+          <dl class="glossary">
+            <div>
+              <dt>Leg</dt>
+              <dd>A defined stretch of a route between two planned stops &mdash; the unit every budget and stop map is built from.</dd>
+            </div>
+            <div>
+              <dt>America the Beautiful pass</dt>
+              <dd>The annual pass covering entrance fees at 2,000+ federal recreation sites; we note where it changes a route&#8217;s math.</dd>
+            </div>
+            <div>
+              <dt>Posted limit</dt>
+              <dd>The legal speed limit for a segment; the basis of our pure drive time before stops are added.</dd>
+            </div>
+            <div>
+              <dt>Hard toll / toll-only</dt>
+              <dd>A crossing with no free alternative and frequently no cash lane &mdash; paid by plate or transponder, sometimes with a rental-car surcharge.</dd>
+            </div>
+            <div>
+              <dt>Slow and scenic</dt>
+              <dd>Our label for a segment where the road itself is the attraction &mdash; no-passing stretches, ocean cliffs, cloverleaf views.</dd>
+            </div>
+            <div>
+              <dt>What nobody tells you</dt>
+              <dd>The original, sourced detail in every guide that the search-result pages skip &mdash; the toll-only bridge, the cash-only lot, the mile of quarters you didn&#8217;t anticipate.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="chapter" id="review">
+          <h2 id="review-title">Review &amp; update cadence</h2>
+          <p>Guides are re-checked at least twice a year against the same sources, and sooner when a known change lands (park-fee increases, bridge toll revisions, permanent closures). Every change is logged with a new &#8220;last reviewed&#8221; date. Spotted a stale figure? <a href="/contacto/">Tell us</a> &mdash; corrections are handled per the <a href="/editorial-guidelines/">editorial guidelines</a>.</p>
+        </div>
+
+        <div class="chapter" id="faq">
+          <h2 id="faq-title">Methodology FAQ</h2>
+          <div class="faq">
+            <details>
+              <summary>How do you calculate gas costs?</summary>
+              <div class="faq__a">
+                <p>Gas per leg = miles &divide; assumed miles-per-gallon (printed beside the math) &times; the <strong>AAA state-average fuel price</strong> for the states the leg crosses, dated and linked. We never invent a per-gallon price; when a worked example uses a round number we label it an example.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Where do park entrance fees come from?</summary>
+              <div class="faq__a">
+                <p>From the current <a href="https://www.nps.gov/planyourvisit/fees.htm" rel="nofollow noopener">NPS fee pages</a> or the owning state agency, with the fee, the check date and the link, plus a note whenever the America the Beautiful pass would change the math.</p>
+              </div>
+            </details>
+            <details>
+              <summary>How do you estimate lodging?</summary>
+              <div class="faq__a">
+                <p>As a nightly <strong>price band</strong> from current public listings &mdash; official visitor bureaus and published booking data, not a single scraped deal. Bands beat false precision because a night&#8217;s rate isn&#8217;t a fact until you book it.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Do budgets include food, attractions and extras?</summary>
+              <div class="faq__a">
+                <p>Leg tables cover the trip-critical lines &mdash; gas, tolls, entry fees, lodging. Food, tours and contingency cash appear as a separate per-day allowance, because tastes differ far more than fuel prices do.</p>
+              </div>
+            </details>
+            <details>
+              <summary>How are drive times estimated?</summary>
+              <div class="faq__a">
+                <p>Distance &divide; posted limit (USDOT/FHWA data) plus a stop allowance of roughly 15 minutes per two hours, with &#8220;slow and scenic&#8221; segments flagged where the road itself dictates the pace.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Why do figures go out of date?</summary>
+              <div class="faq__a">
+                <p>Because prices, fees and tolls change. Every figure carries the date it was verified and every guide shows a &#8220;last reviewed&#8221; date; we re-check at least twice a year. Please verify current rates on the official sources before you travel.</p>
+              </div>
+            </details>
+            <details>
+              <summary>What do you mean by &#8220;what nobody tells you&#8221;?</summary>
+              <div class="faq__a">
+                <p>Each route gives you one original, sourced detail the SERP skips &mdash; the toll-only bridge, the no-cash-lane plaza, the day-use fee that appears when you&#8217;re already parked. It&#8217;s reporting, not recycled listicle filler.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <aside class="notice" aria-labelledby="noticeLabel">
+          <p class="notice__label" id="noticeLabel">Accuracy &amp; affiliation</p>
+          <p>We cite NPS, AAA, USDOT and state agencies as sources; we are not affiliated with them and they do not endorse us. Figures on this page and in our guides are for general planning and are not a guarantee of current pricing &mdash; always confirm with the official source before you travel. See <a href="/editorial-guidelines/">editorial guidelines</a> for the corrections process and <a href="/about/">about</a> for who signs the desk.</p>
+        </aside>
+
+        <p class="byline">&mdash; Editorial RoadTripRoutes</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="sitefoot">
+    <div class="wrap sitefoot__inner">
+      <div class="sitefoot__col">
+        <p class="sitebrand sitebrand--foot">RoadTrip<span>Routes</span></p>
+        <p class="sitefoot__tag">Plan the drive, not just the destination.</p>
+        <p class="sitefoot__fine">Independent US road-travel information. We are not affiliated with NPS, AAA, DOT, or any state or federal agency. Figures are informational and expect you to verify current rates on the official sources before you travel.</p>
+      </div>
+      <nav class="sitefoot__col" aria-label="Footer — Explore">
+        <h2 class="sitefoot__h">Explore</h2>
+        <ul>
+          <li><a href="/about/">About RoadTripRoutes</a></li>
+          <li><a href="/metodologia/">How we budget</a></li>
+          <li><a href="/editorial-guidelines/">Editorial guidelines</a></li>
+        </ul>
+      </nav>
+      <nav class="sitefoot__col" aria-label="Footer — Legal">
+        <h2 class="sitefoot__h">Legal &amp; contact</h2>
+        <ul>
+          <li><a href="/privacidad/">Privacy policy</a></li>
+          <li><a href="/terminos/">Terms of use</a></li>
+          <li><button type="button" id="consent-settings" class="linklike">Cookie &amp; consent settings</button></li>
+          <li><a href="/contacto/">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="sitefoot__bottom">&copy; 2026 RoadTripRoutes &middot; Last reviewed September 18, 2026 &middot; <a href="/sitemap.xml">Sitemap</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

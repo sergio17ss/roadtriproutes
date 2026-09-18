@@ -1,0 +1,481 @@
+/* ==========================================================================
+   RoadTripRoutes — editorial stylesheet
+   US road trips & weekend getaways · www.roadtriproutes.com
+   Identity: a road journal. Deep asphalt blue, desert sand, amber warnings.
+   Serif explains; sans navigates and counts.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Road palette */
+  --blue-ink:     #081f33;   /* dark asphalt, deepest text */
+  --blue-deep:    #0e3150;   /* primary brand blue */
+  --blue-mid:     #17507f;   /* links, accents */
+  --blue-lt:      #e8eff6;   /* pale blue wash */
+  --sand-paper:   #fbf8f0;   /* page background — warm paper */
+  --sand-1:       #f2ecdc;   /* raised boxes */
+  --sand-2:       #e4d8bd;   /* hairlines, borders */
+  --desert:       #7a6538;   /* sandy bronze for text on light paper (WCAG AA) */
+  --desert-soft:  #c2ad7c;   /* lighter desert: decorative + text on dark blue */
+  --amber:        #8f5200;   /* burnt amber for labels & actions (WCAG AA) */
+  --amber-soft:   #fbf1df;   /* plan-ahead fill */
+  --amber-line:   #e8b45c;
+  --ink:          #22313d;   /* body text */
+  --muted:        #5d6d78;   /* secondary text */
+  --warn:         #9c3b2c;   /* hard warnings */
+
+  /* Type */
+  --serif: Georgia, "Source Serif 4", "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+
+  /* Rhythm */
+  --measure: 68rem;          /* max readable column */
+  --measure-narrow: 46rem;
+  --space: 1.5rem;
+
+  --focus-ring: 3px solid var(--amber);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--sand-paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--blue-mid); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--blue-ink); }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  color: var(--blue-ink);
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin: 0 0 1rem; }
+h2 { font-size: clamp(1.45rem, 3.2vw, 2rem); margin: 0 0 .75rem; }
+h3 { font-size: 1.22rem; margin: 0 0 .4rem; }
+h4 { font-size: 1.05rem; margin: 0 0 .4rem; }
+
+p { margin: 0 0 1rem; }
+
+ul, ol { padding-left: 1.4rem; }
+li { margin-bottom: .5rem; }
+
+.wrap { max-width: var(--measure); margin-inline: auto; padding-inline: 1.25rem; }
+.wrap--narrow { max-width: var(--measure-narrow); }
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--amber); color: #fff;
+  padding: .6rem 1rem; z-index: 200; font-family: var(--sans);
+}
+.skip-link:focus { left: 0; position: fixed; }
+
+:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+::selection { background: var(--amber-line); color: var(--blue-ink); }
+
+/* Tabular numbers for money, miles, speed */
+.tabular { font-family: var(--sans); font-variant-numeric: tabular-nums; }
+
+/* --------------------------------------------------------------------------
+   3. Masthead — the road journal's nameplate
+   -------------------------------------------------------------------------- */
+.masthead {
+  border-bottom: 1px solid var(--sand-2);
+  background: var(--sand-paper);
+}
+.masthead__inner {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.25rem;
+  padding-block: 1rem;
+}
+.sitebrand {
+  font-family: var(--serif);
+  font-size: 1.6rem; font-weight: 700; letter-spacing: .01em;
+  margin: 0;
+}
+.sitebrand a { color: var(--blue-ink); text-decoration: none; }
+.sitebrand a:hover { color: var(--blue-mid); }
+.sitebrand span { color: var(--desert); }
+
+.nav { margin-inline-start: auto; }
+.nav__list {
+  list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1.15rem;
+  margin: 0; padding: 0;
+}
+.nav__list a {
+  font-family: var(--sans); font-size: .82rem; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase;
+  text-decoration: none; color: var(--blue-deep);
+  padding-block: .25rem;
+  border-bottom: 2px solid transparent;
+}
+.nav__list a:hover { border-bottom-color: var(--amber); color: var(--blue-ink); }
+
+.masthead__date {
+  font-family: var(--sans); font-size: .72rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin: 0;
+}
+@media (max-width: 720px) { .masthead__date { width: 100%; } }
+
+/* --------------------------------------------------------------------------
+   4. Hero — a full-bleed photograph and one strong idea
+   -------------------------------------------------------------------------- */
+.hero { position: relative; overflow: hidden; }
+.hero__media { margin: 0; position: relative; }
+.hero__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(8,31,51,0.10) 0%,
+    rgba(8,31,51,0.35) 55%,
+    rgba(8,31,51,0.88) 100%);
+}
+.hero__media img { width: 100%; height: clamp(24rem, 62vh, 42rem); object-fit: cover; }
+.hero__credit {
+  position: absolute; right: .75rem; bottom: .5rem; z-index: 2;
+  font-family: var(--sans); font-size: .68rem; color: rgba(255,255,255,.85);
+  margin: 0;
+}
+.hero__credit a { color: rgba(255,255,255,.85); }
+.hero__copy {
+  position: absolute; inset: auto 0 0 0; z-index: 1;
+  padding-bottom: clamp(2rem, 6vw, 4rem);
+}
+.hero__copy h1 { color: #fff; max-width: 22ch; margin-bottom: 1rem; }
+.hero__lede { color: #fff; max-width: 52ch; font-size: 1.15rem; margin-bottom: 1.4rem; }
+.hero__lede strong { color: var(--amber-line); font-weight: 700; }
+.hero--short .hero__media img { height: clamp(18rem, 40vh, 26rem); }
+.hero--short .hero__copy h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); }
+
+.kicker {
+  font-family: var(--sans); font-size: .78rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--amber); margin: 0 0 .6rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.kicker::before { content: ""; display: inline-block; width: 2.4rem; height: 2px; background: var(--amber); }
+.hero__copy .kicker { color: var(--amber-line); }
+
+/* --------------------------------------------------------------------------
+   5. Buttons & status
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-block; font-family: var(--sans); font-size: .86rem;
+  font-weight: 700; letter-spacing: .05em; text-decoration: none;
+  padding: .7rem 1.3rem; border: 2px solid transparent; border-radius: 2px;
+  cursor: pointer;
+}
+.btn--amber { background: var(--amber); color: #fff; }
+.btn--amber:hover { background: var(--blue-ink); color: #fff; }
+.btn--ghost {
+  border-color: rgba(255,255,255,.85); color: #fff; background: transparent;
+}
+.btn--ghost:hover { background: rgba(255,255,255,.14); color: #fff; }
+.btn--outline { border-color: var(--blue-deep); color: var(--blue-deep); background: transparent; }
+.btn--outline:hover { background: var(--blue-deep); color: #fff; }
+
+.tag {
+  font-family: var(--sans); font-size: .7rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--amber); border: 1px solid var(--amber-line);
+  padding: .18rem .55rem; border-radius: 999px; white-space: nowrap;
+}
+.tag--live { color: var(--blue-mid); border-color: var(--blue-mid); }
+
+/* --------------------------------------------------------------------------
+   6. Editorial sections
+   -------------------------------------------------------------------------- */
+.section { padding-block: calc(var(--space) * 2.2); }
+.section--alt { background: #fff; border-block: 1px solid var(--sand-2); }
+.section--note { background: var(--blue-lt); }
+
+.section__head { max-width: var(--measure-narrow); margin-bottom: 1.6rem; }
+.section__lede { font-size: 1.1rem; color: var(--muted); max-width: 58ch; }
+
+/* a rule above every heading, like a fresh column in a paper */
+.rule-title { padding-top: .7rem; border-top: 3px solid var(--blue-deep); }
+
+/* Date / byline line */
+.byline {
+  font-family: var(--sans); font-size: .8rem; letter-spacing: .04em;
+  color: var(--muted); text-transform: none; margin: 0 0 1.5rem;
+}
+.byline strong { color: var(--blue-deep); }
+
+/* --------------------------------------------------------------------------
+   7. Routes listing — editorial rows, never a card grid
+   -------------------------------------------------------------------------- */
+.routes { list-style: none; margin: 0; padding: 0; counter-reset: route; }
+.route {
+  display: grid; grid-template-columns: 4rem 1fr auto;
+  gap: 1rem; align-items: start;
+  padding-block: 1.4rem;
+  border-top: 1px solid var(--sand-2);
+}
+.route:last-child { border-bottom: 1px solid var(--sand-2); }
+.route__num {
+  font-family: var(--sans); font-variant-numeric: tabular-nums;
+  font-size: .9rem; font-weight: 700; color: var(--desert);
+  margin: .4rem 0 0;
+}
+.route h3 { margin-top: 0; }
+.route__desc { color: var(--muted); max-width: 68ch; margin-bottom: .3rem; }
+.route .tag { align-self: center; }
+@media (max-width: 640px) {
+  .route { grid-template-columns: 2.6rem 1fr; }
+  .route .tag { grid-column: 2; justify-self: start; }
+}
+
+/* --------------------------------------------------------------------------
+   8. Semantic boxes
+   -------------------------------------------------------------------------- */
+/* TL;DR — quick answer up top, sand box, double rule */
+.tl-dr {
+  background: var(--sand-1);
+  border-top: 3px double var(--desert);
+  border-bottom: 1px solid var(--sand-2);
+  padding: 1.2rem 1.4rem; margin: 0 0 2rem;
+}
+.tl-dr__label {
+  font-family: var(--sans); font-size: .74rem; font-weight: 800;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+  margin: 0 0 .5rem; display: flex; align-items: center; gap: .5rem;
+}
+.tl-dr__label::after { content: ""; flex: 1; height: 1px; background: var(--sand-2); }
+.tl-dr p:last-child { margin-bottom: 0; }
+
+/* Plan ahead — amber, the voice of experience */
+.plan-ahead {
+  background: var(--amber-soft);
+  border-left: 5px solid var(--amber);
+  border-block: 1px solid var(--amber-line);
+  padding: 1.2rem 1.4rem; margin: 0 0 2rem;
+}
+.plan-ahead__label {
+  font-family: var(--sans); font-size: .74rem; font-weight: 800;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+  margin: 0 0 .5rem;
+}
+.plan-ahead p:last-child { margin-bottom: 0; }
+
+/* Notice — general heads-up */
+.notice {
+  background: #fff;
+  border-inline-start: 5px solid var(--blue-mid);
+  border-block: 1px solid var(--sand-2);
+  padding: 1.1rem 1.4rem; margin: 0 0 2rem;
+}
+.notice--warn { border-inline-start-color: var(--warn); }
+.notice p:last-child { margin-bottom: 0; }
+.notice .notice__label {
+  font-family: var(--sans); font-size: .74rem; font-weight: 800;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--blue-mid);
+  margin: 0 0 .5rem;
+}
+.notice--warn .notice__label { color: var(--warn); }
+
+/* Disclaimer — small print */
+.disclaimer {
+  font-family: var(--sans); font-size: .82rem; line-height: 1.55;
+  color: var(--muted);
+  border-top: 1px solid var(--sand-2); padding-top: .9rem; margin-top: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Budget tables — full page width, editorial ledger
+   -------------------------------------------------------------------------- */
+.chapter__title { margin-bottom: .25rem; }
+.table-scroll { overflow-x: auto; margin-bottom: 2rem; }
+table {
+  width: 100%; border-collapse: collapse;
+  font-family: var(--sans); font-size: .92rem; line-height: 1.4;
+  background: #fff;
+}
+caption {
+  font-family: var(--serif); font-size: 1rem; color: var(--blue-ink);
+  text-align: left; padding: .6rem .6rem 1rem; caption-side: top;
+}
+th, td { text-align: left; padding: .65rem .8rem; border-bottom: 1px solid var(--sand-2); vertical-align: top; }
+thead th {
+  font-size: .74rem; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--blue-deep); border-bottom: 2px solid var(--blue-deep);
+  background: var(--sand-1);
+}
+tbody tr:nth-child(even) { background: var(--sand-paper); }
+tfoot th { border-top: 2px solid var(--blue-deep); background: var(--sand-1); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.unit { color: var(--muted); font-size: .8em; }
+
+/* --------------------------------------------------------------------------
+   10. Numbered stop map — the route itself, in order
+   -------------------------------------------------------------------------- */
+.stopmap { list-style: none; counter-reset: stop; margin: 0 0 2rem; padding: 0; }
+.stopmap > li {
+  position: relative; counter-increment: stop;
+  padding: 1.2rem 0 1.2rem 3.4rem;
+  border-bottom: 1px solid var(--sand-2);
+}
+.stopmap > li::before {
+  content: counter(stop, decimal-leading-zero);
+  position: absolute; left: 0; top: 1.15rem;
+  width: 2.4rem; height: 2.4rem; line-height: 2.4rem;
+  border-radius: 50%; text-align: center;
+  background: var(--blue-deep); color: var(--sand-1);
+  font-family: var(--sans); font-size: .8rem; font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.stopmap > li:first-child { border-top: 3px solid var(--blue-deep); }
+.stopmap h3 { margin-bottom: .15rem; }
+.stopmap time { font-family: var(--sans); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: var(--amber); }
+
+/* --------------------------------------------------------------------------
+   11. Glossary
+   -------------------------------------------------------------------------- */
+.glossary { margin: 0 0 2rem; border-top: 1px solid var(--sand-2); }
+.glossary > div { display: grid; grid-template-columns: 13rem 1fr; gap: 1rem; padding-block: .9rem; border-bottom: 1px solid var(--sand-2); }
+.glossary dt { font-family: var(--serif); font-weight: 700; color: var(--blue-ink); }
+.glossary dd { margin: 0; }
+@media (max-width: 640px) { .glossary > div { grid-template-columns: 1fr; gap: .2rem; } }
+
+dfn {
+  font-style: normal; font-weight: 600; color: var(--blue-deep);
+  border-bottom: 1px dotted var(--desert); cursor: help;
+}
+
+/* --------------------------------------------------------------------------
+   12. FAQ
+   -------------------------------------------------------------------------- */
+.faq { max-width: var(--measure); }
+.faq details { border-bottom: 1px solid var(--sand-2); }
+.faq details:first-of-type { border-top: 1px solid var(--sand-2); }
+.faq summary {
+  cursor: pointer; font-family: var(--serif); font-size: 1.1rem; font-weight: 700;
+  color: var(--blue-ink); padding: 1rem 0; list-style-position: outside;
+}
+.faq summary:hover { color: var(--amber); }
+.faq details[open] summary { color: var(--amber); }
+.faq__a { padding: 0 0 1.1rem; }
+.faq__a p:last-child { margin-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   13. Article / prose pages
+   -------------------------------------------------------------------------- */
+.article { padding-block: calc(var(--space) * 2); }
+.article__body { max-width: var(--measure); }
+.article__body > p { max-width: var(--measure-narrow); }
+
+.chapter { margin: 2.6rem 0 0; }
+.chapter h2 { padding-top: .6rem; border-top: 2px solid var(--blue-deep); }
+
+.sources { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.sources li {
+  background: #fff; border: 1px solid var(--sand-2); border-inline-start: 5px solid var(--blue-mid);
+  padding: 1rem 1.2rem; margin: 0;
+}
+.sources .sources__who { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: .3rem; }
+.sources p:last-child { margin-bottom: 0; }
+
+.contact-list { list-style: none; margin: 0 0 2rem; padding: 0; }
+.contact-list li { padding: 1rem 0; border-bottom: 1px solid var(--sand-2); }
+.contact-list li:first-child { border-top: 1px solid var(--sand-2); }
+.contact-list strong { display: block; font-family: var(--serif); color: var(--blue-ink); }
+
+/* Masthead mini image on interior pages */
+.lede-media { margin: 0 0 2rem; }
+.lede-media img { border: 1px solid var(--sand-2); }
+.lede-media figcaption { font-family: var(--sans); font-size: .74rem; color: var(--muted); margin-top: .5rem; }
+
+/* --------------------------------------------------------------------------
+   14. Footer
+   -------------------------------------------------------------------------- */
+.sitefoot { background: var(--blue-ink); color: var(--sand-1); margin-top: 3rem; }
+.sitefoot__inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; padding-block: 3rem 1.4rem; }
+.sitefoot .sitebrand a { color: var(--sand-1); }
+.sitefoot .sitebrand span { color: var(--amber-line); }
+.sitefoot__h {
+  font-family: var(--sans); font-size: .74rem; font-weight: 800;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--amber-line);
+  margin: 0 0 .8rem;
+}
+.sitefoot__col ul { list-style: none; margin: 0; padding: 0; }
+.sitefoot__col li { margin: 0 0 .5rem; }
+.sitefoot__col a { color: var(--sand-1); text-decoration: none; }
+.sitefoot__col a:hover { color: #fff; text-decoration: underline; }
+.linklike {
+  background: none; border: 0; padding: 0; margin: 0; cursor: pointer;
+  font-family: var(--sans); font-size: 1rem; color: var(--sand-1); text-decoration: none;
+  text-align: left;
+}
+.linklike:hover { color: #fff; text-decoration: underline; }
+.sitefoot__tag { font-family: var(--serif); font-style: italic; color: var(--sand-2); margin: .4rem 0 1rem; }
+.sitefoot__fine { font-family: var(--sans); font-size: .8rem; line-height: 1.6; color: var(--desert-soft); margin: 0; }
+.sitefoot__bottom {
+  grid-column: 1 / -1;
+  font-family: var(--sans); font-size: .76rem; color: var(--desert-soft);
+  border-top: 1px solid rgba(242,236,220,.18); padding-top: 1.1rem; margin: 1rem 0 0;
+}
+.sitefoot__bottom a { color: var(--sand-2); }
+@media (max-width: 760px) { .sitefoot__inner { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+/* --------------------------------------------------------------------------
+   15. Consent banner (built by js/main.js)
+   -------------------------------------------------------------------------- */
+.consent-banner {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
+  background: var(--blue-ink); color: var(--sand-1);
+  border-top: 4px solid var(--amber);
+  box-shadow: 0 -8px 28px rgba(8,31,51,.35);
+  transform: translateY(0); transition: transform .3s ease;
+}
+.consent-banner--hide { transform: translateY(110%); }
+.consent-banner__inner { padding-block: 1.25rem; display: grid; gap: .8rem; }
+.consent-banner__title {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 700;
+  color: var(--amber-line); margin: 0;
+}
+.consent-banner__copy { font-family: var(--sans); font-size: .9rem; line-height: 1.6; margin: 0; max-width: 60ch; }
+.consent-banner__copy a { color: var(--amber-line); }
+.consent-banner__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.consent-banner .btn--ghost { border-color: var(--sand-2); color: var(--sand-1); }
+.consent-banner .btn--ghost:hover { background: rgba(255,255,255,.12); }
+
+/* --------------------------------------------------------------------------
+   16. 404
+   -------------------------------------------------------------------------- */
+.error-hero { text-align: center; padding-block: clamp(4rem, 14vh, 8rem); }
+.error-hero h1 { font-size: clamp(4rem, 14vw, 9rem); color: var(--desert); margin-bottom: .5rem; }
+.error-hero .kicker { justify-content: center; }
+.error-hero .kicker::before, .error-hero .kicker::after { content: ""; display: inline-block; width: 2.4rem; height: 2px; background: var(--amber); }
+.error-hero .kicker::after { margin-inline-start: .6rem; }
+
+/* --------------------------------------------------------------------------
+   17. Print & motion preferences
+   -------------------------------------------------------------------------- */
+@media print {
+  .masthead, .sitefoot, .consent-banner, .btn, .nav { display: none !important; }
+  body { background: #fff; color: #000; }
+  .tl-dr, .plan-ahead, .notice { break-inside: avoid; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
