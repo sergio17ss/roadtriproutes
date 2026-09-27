@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /404.html
 
-Sitemap: https://roadtriproutes.com/sitemap.xml
+Sitemap: https://sergio17ss.github.io/roadtriproutes/sitemap.xml
